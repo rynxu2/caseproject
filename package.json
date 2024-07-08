@@ -21,8 +21,5 @@
     "vite": "^5.3.1"
   },
   "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
