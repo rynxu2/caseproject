@@ -1,7 +1,7 @@
 <template>
     <div
-        class="main-section antialiased relative font-nunito text-sm font-normal"
-        :class="[store.sidebar ? 'toggle-sidebar' : '', store.menu, store.layout, store.rtlClass]"
+        class="main-section antialiased relative font-nunito text-sm font-normal horizontal"
+        :class="[store.sidebar ? 'toggle-sidebar' : '', store.layout, store.rtlClass]"
     >
         <component v-bind:is="mainLayout"></component>
     </div>

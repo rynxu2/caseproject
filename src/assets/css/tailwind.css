@@ -138,7 +138,7 @@ hover:text-primary hover:before:!bg-primary ltr:before:mr-2 rtl:before:ml-2 dark
         @apply ltr:ml-0 rtl:mr-0;
     }
     .horizontal .sidebar {
-        @apply ltr:-left-[260px] rtl:-right-[260px];
+        @apply ltr:-left-[290px] rtl:-right-[290px];
     }
     .horizontal.toggle-sidebar .sidebar {
         @apply ltr:left-0 rtl:right-0 lg:ltr:-left-[260px] lg:rtl:-right-[260px];
@@ -158,7 +158,7 @@ hover:text-primary hover:before:!bg-primary ltr:before:mr-2 rtl:before:ml-2 dark
     }
 
     .horizontal-menu .nav-link.active {
-        @apply bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark;
+        @apply bg-[#f37423]/[0.9] text-black dark:bg-[#181f32] dark:text-white-dark;
     }
 
     .horizontal-menu ul.sub-menu {

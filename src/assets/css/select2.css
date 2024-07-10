@@ -53,3 +53,15 @@
 .custom-multiselect .multiselect__tag-icon {
     @apply !top-auto;
 }
+
+.custom-multiselect .multiselect__content {
+    @apply w-full;
+}
+
+.custom-multiselect .multiselect__content .multiselect__option--selected {
+    color: #fc692a !important;
+}
+
+.custom-multiselect .multiselect__content .multiselect__option--highlight {
+    color: #fc692a !important;
+}
