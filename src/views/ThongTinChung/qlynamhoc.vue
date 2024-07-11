@@ -1,29 +1,55 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
-    import Multiselect from '@suadelabs/vue3-multiselect';
-    import '@suadelabs/vue3-multiselect/dist/vue3-multiselect.css';
+    import { reactive, ref } from 'vue';
     import MultiselectInputGroup from '@/views/ThongTinChung/MultiselectInputGroup.vue';
+    import Vue3Datatable from '@bhplugin/vue3-datatable';
+    import { useMeta } from '@/composables/use-meta';
 
     const focus = ref(false);
-    const options = ref(['Orange', 'White', 'Purple']);
-    const input1 = ref('Orange');
-    const input2 = ref('Orange');
-    const filterGroups = [1]
+    const filterGroups = reactive([1])
+
     const addFilterGroup = () => {
-        filterGroups.push(1);
-    }
+        filterGroups.push(filterGroups.length + 1);
+    };
+
+    const deleteItem = (index) => {
+        filterGroups.splice(index, 1);
+    };
+
+    useMeta({ title: 'Checkbox Table' });
+    const cols =
+        ref([
+            { field: 'namhoc', title: 'Năm học', isUnique: true },
+        ]) || [];
+
+    const rows = ref(
+        [
+            {
+                namhoc: '2023 - 2024',
+            },
+        ] || []
+    );
 </script>
 
 <template>
     <div>
-        <div class="top">
+        <div class="top mb-10">
             <div class="flex">
                 <div class="w-1/2 space-y-2 prose max-w-full">
-                    <h4>Năm học</h4>
+                    <h3 class="m-0">Năm học</h3>
+                    <div class="relative inline-flex align-middle" style="margin-top: 0 !important;">
+                        <button type="button" class="btn bg-[#f48239] rounded-r-none shadow-none text-white hover:bg-[#e3600c] px-3 py-1">Tạo</button>
+                        <button type="button" class="btn rounded-l-none shadow-none hover:bg-[#ececec] px-3 py-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                <path d="m12 16 4-5h-3V4h-2v7H8z"></path>
+                                <path d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <div class="w-1/2 flex flex-col justify-start gap-1">
                     <form>
-                        <div class="search-form-overlay relative border border-white-dark/20 rounded-md h-9 w-full" @click="focus = true" :class="focus && 'input-focused'">
+                        <div class="search-form-overlay relative border border-white-dark/20 rounded-md h-9 w-full bg-white" @click="focus = true" :class="focus && 'input-focused'">
                             <input
                                 type="text"
                                 placeholder="Search..."
@@ -58,11 +84,15 @@
                                     Bộ lọc
                                 </a>
                                 <template #content="{ close }">
-                                    <div class="filter-box px-4 py-2 bg-white">
+                                    <div class="filter-box px-4 py-2 bg-white shadow-md rounded">
                                         <div class="filter-content">
                                             <MultiselectInputGroup
                                                 v-for="(group, index) in filterGroups"
                                                 :key="index"
+                                                :index="index"
+                                                :multi="(filterGroups.length > 1) ? true : false"
+                                                :filter-group="filterGroups"
+                                                @deleteItem="deleteItem"
                                             />
                                         </div>
                                         <div class="relative inline-flex align-middle mt-3 gap-1">
@@ -123,6 +153,39 @@
                                 </template>
                             </Popper>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div>
+                <div class="panel pb-0 mt-6">
+                    <div class="datatable">
+                        <vue3-datatable
+                            :rows="rows"
+                            :columns="cols"
+                            :totalRows="rows?.length"
+                            :hasCheckbox="true"
+                            :sortable="true"
+                            sortColumn="name"
+                            skin="whitespace-nowrap bh-table-hover"
+                            firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180">
+                                <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>'
+                                                            lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180">
+                                <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>'
+                                                            previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180">
+                                <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>'
+                                                            nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180">
+                                <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>'
+                        >
+                        </vue3-datatable>
                     </div>
                 </div>
             </div>

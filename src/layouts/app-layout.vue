@@ -57,7 +57,7 @@
                 <!--  END TOP NAVBAR  -->
 
                 <!--  BEGIN CONTENT AREA  -->
-                <div class="p-6 animation">
+                <div class="animation p-6">
                     <router-view></router-view>
                 </div>
                 <!--  END CONTENT AREA  -->
