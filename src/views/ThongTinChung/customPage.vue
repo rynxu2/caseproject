@@ -40,7 +40,7 @@
         </div>
 
         <div class="content">
-
+            {{$route.state}}
         </div>
     </div>
 </template>

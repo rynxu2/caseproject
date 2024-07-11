@@ -61,7 +61,7 @@
                 <li class="before:content-['/'] before:px-1.5"><span>Quản lý thông tin chung</span></li>
                 <li class="flex before:content-['/'] before:px-1.5"><p class="text-black text-2xl">Kỳ học</p></li>
             </ol>
-            <a href="/add" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</a>
+            <router-link to="/add" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</router-link>
         </div>
 
         <div class="content">
