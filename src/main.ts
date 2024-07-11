@@ -49,7 +49,7 @@ import Popper from 'vue3-popper';
 app.component('Popper', Popper);
 
 // json to excel
-import vue3JsonExcel from 'vue3-json-excel';
-app.use(vue3JsonExcel);
+import JsonExcel from "vue-json-excel3";
+app.component("downloadExcel", JsonExcel);
 
 app.mount('#app');

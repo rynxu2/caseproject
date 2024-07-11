@@ -26,9 +26,8 @@
                         <li class="menu nav-item">
                             <router-link to="/" class="nav-link group w-full" :class="{ active: $route.path === '/' }"  @click="toggleMobileMenu">
                                 <div class="flex items-center">
-                                    <icon-menu-dashboard class="group-hover:!text-primary shrink-0" />
                                     <span
-                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{ $t('dashboard') }}</span>
+                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
                                 </div>
                             </router-link>
                         </li>
@@ -41,28 +40,28 @@
                         <li class="nav-item">
                             <ul>
                                 <li class="nav-item">
-                                    <router-link to="/chung/namhoc" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/general/school_year" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Quản lý năm học</span>
                                         </div>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="/chung/kyhoc" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/general/semester" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Quản lý kỳ học</span>
                                         </div>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="/chung/khoa" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/general/student_cohort" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Quản lý khóa</span>
                                         </div>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="/chung/lop" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/general/student_class" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Quản lý lớp</span>
                                         </div>
@@ -76,7 +75,7 @@
                         </h2>
 
                         <li class="menu nav-item">
-                            <router-link to="/sinhvien" class="nav-link group w-full" :class="{ active: $route.path === '/sinhvien' }">
+                            <router-link to="/student" class="nav-link group w-full" :class="{ active: $route.path === '/sinhvien' }">
                                 <div class="flex items-center">
                                     <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Quản lý sinh viên</span>
                                 </div>
@@ -91,14 +90,14 @@
                         <li class="nav-item">
                             <ul>
                                 <li class="nav-item">
-                                    <router-link to="/vang/sinhvien" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/absorbed/student_absent" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Theo sinh viên</span>
                                         </div>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="/vang/lop" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/absorbed/class_absent" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Theo lớp</span>
                                         </div>
@@ -115,14 +114,14 @@
                         <li class="nav-item">
                             <ul>
                                 <li class="nav-item">
-                                    <router-link to="/hocphi/sinhvien" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/tuition/student_fee" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Theo sinh viên</span>
                                         </div>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="/hocphi/lop" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/tuition/class_fee" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Theo lớp</span>
                                         </div>

@@ -283,21 +283,21 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/chung/namhoc">Quản lý năm học</router-link>
+                            <router-link to="/general/school_year">Quản lý năm học</router-link>
                         </li>
                         <li>
-                            <router-link to="/chung/kyhoc">Quản lý kỳ học</router-link>
+                            <router-link to="/general/semester">Quản lý kỳ học</router-link>
                         </li>
                         <li>
-                            <router-link to="/chung/khoa">Quản lý khóa</router-link>
+                            <router-link to="/general/student_cohort">Quản lý khóa</router-link>
                         </li>
                         <li>
-                            <router-link to="/chung/lop">Quản lý lớp</router-link>
+                            <router-link to="/general/student_class">Quản lý lớp</router-link>
                         </li>
                     </ul>
                 </li>
                 <li class="menu nav-item relative">
-                    <router-link to="/sinhvien" class="nav-link px-2">Quản lý sinh viên</router-link>
+                    <router-link to="/student" class="nav-link px-2">Quản lý sinh viên</router-link>
                 </li>
                 <li class="menu nav-item relative">
                     <a href="javascript:;" class="nav-link">
@@ -310,10 +310,10 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/vang/sinhvien">Theo sinh viên</router-link>
+                            <router-link to="/absorbed/student_absent">Theo sinh viên</router-link>
                         </li>
                         <li>
-                            <router-link to="/vang/lop">Theo lớp</router-link>
+                            <router-link to="/absorbed/class_absent">Theo lớp</router-link>
                         </li>
                     </ul>
                 </li>
@@ -328,10 +328,10 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/hocphi/sinhvien">Theo sinh viên</router-link>
+                            <router-link to="/tuition/student_fee">Theo sinh viên</router-link>
                         </li>
                         <li>
-                            <router-link to="/hocphi/lop">Theo lớp</router-link>
+                            <router-link to="/tuition/class_fee">Theo lớp</router-link>
                         </li>
                     </ul>
                 </li>
@@ -480,6 +480,9 @@
         color: white;
     }
     .horizontal-menu ul.sub-menu a:hover {
+        color: rgba(243, 116, 35, 0.9);
+    }
+    .horizontal-menu ul.sub-menu a.active {
         color: rgba(243, 116, 35, 0.9);
     }
 </style>

@@ -102,5 +102,5 @@ export const useAppStore = defineStore('app', {
             }, 500);
         },
     },
-    getters: {},
+    getters: {}
 });

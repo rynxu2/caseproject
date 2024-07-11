@@ -1,27 +1,21 @@
 <script setup lang="ts">
-import ExportTable from '@/views/ThongTinChung/exportTable.vue';
-import { useMeta } from '@/composables/use-meta';
-import { ref } from 'vue';
 
-useMeta({ title: 'Checkbox Table' });
-const search = ref('');
-const cols =
-    ref([
-        { field: 'khoa', title: 'Khóa', isUnique: true, type: 'number', filter: true, search: true, width: "240px", maxWidth: '240px' },
-        { field: 'lop', title: 'Danh sách lớp', filter: true, search: true },
-    ]) || [];
+    const props = defineProps({
+        mode: { type: String, required: true },
+        page: { type: String, required: true },
+        name: { type: String }
+    })
 
-const rows = ref(
-    [
-        { khoa: 15, lop: 'CNTT 15 - 01, CNTT 15 - 02, CNTT 15 - 03, CNTT 15 - 04, CNTT 15 - 05'},
-        { khoa: 16, lop: '' }
-    ] || []
-);
+    let pageTitle
+    if (props.page === 'namhoc') pageTitle = "Năm học"
+    else if (props.page === 'kyhoc') pageTitle = "Kỳ học"
+    else if (props.page === 'khoa') pageTitle = "Khóa"
+    else pageTitle = 'Lớp'
 </script>
 
 <template>
-    <div>
-        <div class="top mb-5">
+    <div class="">
+        <div class="flex justify-between mb-5">
             <ol class="flex text-gray-500 font-semibold dark:text-white-dark">
                 <li>
                     <router-link to="/" class="hover:text-gray-500/70 dark:hover:text-white-dark/70">
@@ -36,16 +30,17 @@ const rows = ref(
                     </router-link>
                 </li>
                 <li class="before:content-['/'] before:px-1.5"><span>Quản lý thông tin chung</span></li>
-                <li class="flex before:content-['/'] before:px-1.5"><p class="text-black text-2xl">Khóa</p></li>
+                <li class="before:content-['/'] before:px-1.5"><span>{{ pageTitle }}</span></li>
+                <li class="flex before:content-['/'] before:px-1.5"><p class="text-black">{{ (mode === 'add') ? "Tạo" : "Sửa" }}</p></li>
             </ol>
+            <div class="relative inline-flex align-middle gap-1.5">
+                <button type="button" class="btn bg-[#f37423] text-white shadow-none hover:bg-[#e3600c]">Lưu</button>
+                <button type="button" class="btn shadow-none hover:bg-[#ececec]">Hủy bỏ</button>
+            </div>
         </div>
 
         <div class="content">
-            <exportTable
-                :cols="cols"
-                :rows="rows"
-                :page="'khoa'"
-            />
+
         </div>
     </div>
 </template>

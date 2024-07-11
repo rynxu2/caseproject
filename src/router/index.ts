@@ -10,56 +10,69 @@ const routes: RouteRecordRaw[] = [
 
     // QuanLyChung
     {
-        path: '/chung/namhoc',
+        path: '/general/school_year',
         name: 'NamHoc',
         component: () => import(/* webpackChunkName: "apps-chat" */ '../views/ThongTinChung/qlynamhoc.vue'),
     },
     {
-        path: '/chung/kyhoc',
+        path: '/general/semester',
         name: 'KyHoc',
         component: () => import(/* webpackChunkName: "apps-mailbox" */ '../views/ThongTinChung/qlykyhoc.vue'),
     },
     {
-        path: '/chung/khoa',
+        path: '/general/student_cohort',
         name: 'Khoa',
         component: () => import(/* webpackChunkName: "apps-todolist" */ '../views/ThongTinChung/qlykhoa.vue'),
     },
     {
-        path: '/chung/lop',
+        path: '/general/student_class',
         name: 'Lop',
         component: () => import(/* webpackChunkName: "apps-notes" */ '../views/ThongTinChung/qlylop.vue'),
     },
 
     // QuanLySinhVien
     {
-        path: '/sinhvien',
+        path: '/student',
         name: 'SinhVien',
         component: () => import(/* webpackChunkName: "components-tabs" */ '../views/SinhVien/index.vue'),
     },
 
     // QuanLyVang
     {
-        path: '/vang/sinhvien',
+        path: '/absorbed/student_absent',
         name: 'VangSinhVien',
         component: () => import(/* webpackChunkName: "components-accordions" */ '../views/Vang/theosinhvien.vue'),
     },
     {
-        path: '/vang/lop',
+        path: '/absorbed/class_absent',
         name: 'VangLop',
         component: () => import(/* webpackChunkName: "components-modals" */ '../views/Vang/theolop.vue'),
     },
 
     // QuanLyHocPhi
     {
-        path: '/hocphi/sinhvien',
+        path: '/tuition/student_fee',
         name: 'HocPhiSinhVien',
         component: () => import(/* webpackChunkName: "components-cards" */ '../views/HocPhi/theosinhvien.vue'),
     },
     {
-        path: '/hocphi/lop',
+        path: '/tuition/class_fee',
         name: 'HocPhiLop',
         component: () => import(/* webpackChunkName: "components-carousel" */ '../views/HocPhi/theolop.vue'),
     },
+
+    {
+        path: '/add',
+        name: 'add',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'add', page: route.path })
+    },
+    {
+        path: '/edit/:name',
+        name: 'edit',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'edit', name: route.params.id })
+    }
 ];
 
 const router = createRouter({
@@ -88,4 +101,5 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from, next) => {
     appSetting.changeAnimation();
 });
+
 export default router;
