@@ -50,13 +50,14 @@
                 <li class="before:content-['/'] before:px-1.5"><span>Quản lý thông tin chung</span></li>
                 <li class="flex before:content-['/'] before:px-1.5"><p class="text-black">Năm học</p></li>
             </ol>
-            <router-link :to="{ path: '/add', state: { page: 'John' } }" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</router-link>
+            <router-link :to="{ name: 'GeneralAdd', params: { entity: 'school_year' } }" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</router-link>
         </div>
 
         <div class="content">
             <exportTable
                 :cols="cols"
                 :rows="rows"
+                :page="'school_year'"
             >
             </exportTable>
         </div>

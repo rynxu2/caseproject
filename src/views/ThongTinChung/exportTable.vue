@@ -2,7 +2,10 @@
 import Vue3Datatable from '@bhplugin/vue3-datatable';
 import IconPrinter from '@/components/icon/icon-printer.vue';
 import IconFile from '@/components/icon/icon-file.vue';
-import { capitalize, onMounted, ref } from 'vue';
+import { capitalize, ref } from 'vue';
+// import router from '@/router';
+import { store } from '@/stores';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
     cols: {
@@ -15,6 +18,7 @@ const props = defineProps({
     },
     page: {
         type: String,
+        required: true
     }
 });
 
@@ -169,6 +173,15 @@ const splitString = (target) => {
 const getExcelData = () => {
     return (datatable.value && datatable.value.getSelectedRows().length !== 0) ? datatable.value.getSelectedRows() : props.rows;
 }
+console.log()
+const rowClick = (data: any) => {
+    router.push({ name: 'GeneralEdit', params: { entity: props.page, data: data } });
+};
+const router = useRouter();
+const navigateWithData = (data) => {
+    store.dispatch('updateData', data);
+    router.push({ name: 'GeneralEdit', params: { entity: props.page } });
+};
 </script>
 
 <template>
@@ -210,6 +223,7 @@ const getExcelData = () => {
                 :columnFilter="true"
                 :columnFilterLang="columnFilterLang"
                 :hasCheckbox="true"
+                @rowClick="navigateWithData"
                 sortColumn="name"
                 skin="whitespace-nowrap bh-table-hover"
                 firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
@@ -217,10 +231,10 @@ const getExcelData = () => {
                 previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                 nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
             >
-                <template #kyhoc="data" v-if="page === 'kyhoc'">
+                <template #kyhoc="data" v-if="page === 'semester'">
                     <input type="checkbox" :checked="data.value.kyhoc" disabled style="opacity: 1 !important; position: sticky !important; width: 16px !important; ">
                 </template>
-                <template #lop="data" v-else-if="page === 'khoa'">
+                <template #lop="data" v-else-if="page === 'student_cohort'">
                     <span v-if="data.value.lop.length !== 0" v-for="lop in splitString(data.value.lop)" class="badge badge-outline-dark mr-1 rounded-2xl">{{lop}}</span>
                 </template>
             </vue3-datatable>

@@ -62,17 +62,53 @@ const routes: RouteRecordRaw[] = [
     },
 
     {
-        path: '/add',
-        name: 'add',
+        path: '/general/:entity/add',
+        name: 'GeneralAdd',
         component: () => import('../views/ThongTinChung/customPage.vue'),
-        props: (route) => ({ mode: 'add', page: route.path })
+        props: (route) => ({ mode: 'add', entity: route.params.entity })
     },
     {
-        path: '/edit/:name',
-        name: 'edit',
+        path: '/tuition/:entity/add',
+        name: 'TuitionAdd',
         component: () => import('../views/ThongTinChung/customPage.vue'),
-        props: (route) => ({ mode: 'edit', name: route.params.id })
-    }
+        props: (route) => ({ mode: 'add', entity: route.params.entity })
+    },
+    {
+        path: '/absorbed/:entity/add',
+        name: 'AbsorbedAdd',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'add', entity: route.params.entity })
+    },
+    {
+        path: '/student/add',
+        name: 'StudentAdd',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'add', entity: route.path })
+    },
+    {
+        path: '/general/:entity/edit',
+        name: 'GeneralEdit',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'edit', entity: route.params.entity })
+    },
+    {
+        path: '/tuition/:entity/edit',
+        name: 'TuitionEdit',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'edit', entity: route.params.entity })
+    },
+    {
+        path: '/absorbed/:entity/edit',
+        name: 'AbsorbedEdit',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'edit', entity: route.params.entity })
+    },
+    {
+        path: '/student/edit',
+        name: 'StudentEdit',
+        component: () => import('../views/ThongTinChung/customPage.vue'),
+        props: (route) => ({ mode: 'edit', entity: route.params.entity })
+    },
 ];
 
 const router = createRouter({

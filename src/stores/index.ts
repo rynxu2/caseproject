@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import i18n from '@/i18n';
 import appSetting from '@/app-setting';
+import { createStore } from 'vuex';
 
 export const useAppStore = defineStore('app', {
     state: () => ({
@@ -103,4 +104,23 @@ export const useAppStore = defineStore('app', {
         },
     },
     getters: {}
+});
+
+export const store = createStore({
+    state: {
+        data: null,
+    },
+    mutations: {
+        setData(state, data) {
+            state.data = data;
+        },
+    },
+    actions: {
+        updateData({ commit }, data) {
+            commit('setData', data);
+        },
+    },
+    getters: {
+        getData: (state) => state.data,
+    },
 });

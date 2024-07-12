@@ -50,7 +50,7 @@
     "vue3-perfect-scrollbar": "^1.6.0",
     "vue3-popper": "^1.5.0",
     "vue3-quill": "^0.2.9",
-    "vuex": "^4.1.0"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^6.0.3",

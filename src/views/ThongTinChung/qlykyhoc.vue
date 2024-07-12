@@ -1,11 +1,9 @@
 <script setup lang="ts">
     import { reactive, ref } from 'vue';
-    import MultiselectInputGroup from '@/views/ThongTinChung/MultiselectInputGroup.vue';
-    import Vue3Datatable from '@bhplugin/vue3-datatable';
     import { useMeta } from '@/composables/use-meta';
-    import IconPrinter from '@/components/icon/icon-printer.vue';
-    import IconFile from '@/components/icon/icon-file.vue';
     import ExportTable from '@/views/ThongTinChung/exportTable.vue';
+    import router from '@/router';
+    import { useRoute } from 'vue-router';
 
     const focus = ref(false);
     const filterGroups = reactive([1])
@@ -61,14 +59,14 @@
                 <li class="before:content-['/'] before:px-1.5"><span>Quản lý thông tin chung</span></li>
                 <li class="flex before:content-['/'] before:px-1.5"><p class="text-black text-2xl">Kỳ học</p></li>
             </ol>
-            <router-link to="/add" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</router-link>
+            <router-link :to="{ name: 'GeneralAdd', params: { entity: 'semester' } }" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</router-link>
         </div>
 
         <div class="content">
             <exportTable
                 :cols="cols"
                 :rows="rows"
-                :page="'kyhoc'"
+                :page="'semester'"
             />
         </div>
     </div>

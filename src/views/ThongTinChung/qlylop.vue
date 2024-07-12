@@ -26,7 +26,7 @@ const rows = ref(
 
 <template>
     <div>
-        <div class="top mb-5">
+        <div class="flex justify-between mb-5">
             <ol class="flex text-gray-500 font-semibold dark:text-white-dark">
                 <li>
                     <router-link to="/" class="hover:text-gray-500/70 dark:hover:text-white-dark/70">
@@ -43,13 +43,14 @@ const rows = ref(
                 <li class="before:content-['/'] before:px-1.5"><span>Quản lý thông tin chung</span></li>
                 <li class="flex before:content-['/'] before:px-1.5"><p class="text-black text-2xl">Lớp</p></li>
             </ol>
+            <router-link :to="{ name: 'GeneralAdd', params: { entity: 'student_class' } }" class="btn text-dnu hover:bg-[#f37423] hover:text-white">Tạo</router-link>
         </div>
 
         <div class="content">
             <exportTable
                 :cols="cols"
                 :rows="rows"
-                :page="'lop'"
+                :page="'student_class'"
             />
         </div>
     </div>

@@ -1,16 +1,21 @@
 <script setup lang="ts">
+    import { useRoute } from 'vue-router';
+    import { computed } from 'vue';
+    import { store } from '@/stores';
 
     const props = defineProps({
         mode: { type: String, required: true },
-        page: { type: String, required: true },
-        name: { type: String }
+        entity: { type: String, required: true },
+        data: { type: Object }
     })
 
     let pageTitle
-    if (props.page === 'namhoc') pageTitle = "Năm học"
-    else if (props.page === 'kyhoc') pageTitle = "Kỳ học"
-    else if (props.page === 'khoa') pageTitle = "Khóa"
+    if (props.entity === 'school_year') pageTitle = "Năm học"
+    else if (props.entity === 'semester') pageTitle = "Kỳ học"
+    else if (props.entity === 'student_cohort') pageTitle = "Khóa"
     else pageTitle = 'Lớp'
+
+    const data = computed(() => store.getters.getData);
 </script>
 
 <template>
@@ -31,7 +36,7 @@
                 </li>
                 <li class="before:content-['/'] before:px-1.5"><span>Quản lý thông tin chung</span></li>
                 <li class="before:content-['/'] before:px-1.5"><span>{{ pageTitle }}</span></li>
-                <li class="flex before:content-['/'] before:px-1.5"><p class="text-black">{{ (mode === 'add') ? "Tạo" : "Sửa" }}</p></li>
+                <li class="flex before:content-['/'] before:px-1.5"><p class="text-black">{{ (mode === 'add') ? "Tạo" : name }}</p></li>
             </ol>
             <div class="relative inline-flex align-middle gap-1.5">
                 <button type="button" class="btn bg-[#f37423] text-white shadow-none hover:bg-[#e3600c]">Lưu</button>
@@ -40,7 +45,7 @@
         </div>
 
         <div class="content">
-            {{$route.state}}
+            <pre>{{data}}</pre>
         </div>
     </div>
 </template>
